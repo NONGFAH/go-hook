@@ -2,7 +2,7 @@
 package keyboard
 
 import (
-	"github.com/moutend/go-hook/pkg/types"
+	"github.com/nongfah/go-hook/pkg/types"
 )
 
 // HookHandler is a callback function which processes the incoming low level events.

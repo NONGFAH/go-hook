@@ -1,3 +1,4 @@
+//go:build !windows
 // +build !windows
 
 package keyboard
@@ -5,7 +6,7 @@ package keyboard
 import (
 	"fmt"
 
-	"github.com/moutend/go-hook/pkg/types"
+	"github.com/nongfah/go-hook/pkg/types"
 )
 
 func install(fn HookHandler, c chan<- types.KeyboardEvent) error {

@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 package keyboard
@@ -8,8 +9,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/moutend/go-hook/pkg/types"
-	"github.com/moutend/go-hook/pkg/win32"
+	"github.com/nongfah/go-hook/pkg/types"
+	"github.com/nongfah/go-hook/pkg/win32"
 )
 
 var hHook struct {

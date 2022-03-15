@@ -1,3 +1,4 @@
+//go:build !windows
 // +build !windows
 
 package mouse
@@ -5,7 +6,7 @@ package mouse
 import (
 	"fmt"
 
-	"github.com/moutend/go-hook/pkg/types"
+	"github.com/nongfah/go-hook/pkg/types"
 )
 
 func install(fn HookHandler, c chan<- types.MouseEvent) error {

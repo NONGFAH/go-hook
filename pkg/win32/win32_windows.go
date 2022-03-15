@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 package win32
@@ -6,7 +7,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/moutend/go-hook/pkg/types"
+	"github.com/nongfah/go-hook/pkg/types"
 )
 
 var (
