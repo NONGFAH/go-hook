@@ -1,3 +1,3 @@
-module github.com/moutend/go-hook
+module github.com/nongfah/go-hook
 
 go 1.13
