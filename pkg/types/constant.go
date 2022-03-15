@@ -35,6 +35,8 @@ const (
 	WM_MOUSEHWHEEL Message = 0x020E
 	WM_RBUTTONDOWN Message = 0x0204
 	WM_RBUTTONUP   Message = 0x0205
+	WM_MBUTTONDOWN Message = 0x0207
+	WM_MBUTTONUP   Message = 0x0208
 	WM_KEYDOWN     Message = 0x0100
 	WM_KEYUP       Message = 0x0101
 	WM_SYSKEYDOWN  Message = 0x0104

@@ -20,7 +20,7 @@ type KBDLLHOOKSTRUCT struct {
 // https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-msllhookstruct
 type MSLLHOOKSTRUCT struct {
 	POINT
-	MouseData   uint32
+	MouseData   int32
 	Flags       uint32
 	Time        uint32
 	DWExtraInfo uint32
