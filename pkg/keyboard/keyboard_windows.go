@@ -99,7 +99,7 @@ func input(event types.KBDLLHOOKSTRUCT) error {
 		Val  types.KBDLLHOOKSTRUCT
 		Padd uint64
 	}{
-		Type: 0,
+		Type: 1,
 		Val:  event,
 		Padd: 0,
 	}

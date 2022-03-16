@@ -6,11 +6,12 @@ package types
 //
 // https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-kbdllhookstruct
 type KBDLLHOOKSTRUCT struct {
-	VKCode      VKCode
-	ScanCode    uint32
-	Flags       uint32
-	Time        uint32
-	DWExtraInfo uint32
+	VKCode   VKCode
+	ScanCode uint32
+	Flags    uint32
+	Time     uint32
+	// 32,64位操作系统，字长不同
+	DWExtraInfo uint
 }
 
 // MSLLHOOKSTRUCT represents MSLLHOOKSTRUCT structure.
@@ -20,10 +21,11 @@ type KBDLLHOOKSTRUCT struct {
 // https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-msllhookstruct
 type MSLLHOOKSTRUCT struct {
 	POINT
-	MouseData   int32
-	Flags       uint32
-	Time        uint32
-	DWExtraInfo uint32
+	MouseData int32
+	Flags     uint32
+	Time      uint32
+	// 32,64位操作系统，字长不同
+	DWExtraInfo uint
 }
 
 // MSG represents MSG structure.
