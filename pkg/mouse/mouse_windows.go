@@ -93,13 +93,13 @@ func uninstall() error {
 	return nil
 }
 
-func input(event types.MouseEvent) error {
+func input(mouseEvent types.MSLLHOOKSTRUCT) error {
 	s := struct {
 		Type uint32
 		Val  types.MSLLHOOKSTRUCT
 	}{
 		Type: 0,
-		Val:  event.MSLLHOOKSTRUCT,
+		Val:  mouseEvent,
 	}
 	return win32.SendInput(1, unsafe.Pointer(&s), unsafe.Sizeof(s))
 }

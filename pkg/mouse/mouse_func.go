@@ -17,6 +17,6 @@ func uninstall() error {
 	return fmt.Errorf("mouse: not supported")
 }
 
-func Input(event types.MouseEvent) error {
+func Input(mouseEvent types.MSLLHOOKSTRUCT) error {
 	return fmt.Errorf("mouse: not supported")
 }

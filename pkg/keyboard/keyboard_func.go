@@ -17,6 +17,6 @@ func uninstall() error {
 	return fmt.Errorf("keyboard: not supported")
 }
 
-func Input(event types.KeyboardEvent) error {
+func Input(event types.KBDLLHOOKSTRUCT) error {
 	return fmt.Errorf("mouse: not supported")
 }

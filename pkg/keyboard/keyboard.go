@@ -20,6 +20,6 @@ func Uninstall() error {
 	return uninstall()
 }
 
-func Input(event types.KeyboardEvent) error {
+func Input(event types.KBDLLHOOKSTRUCT) error {
 	return input(event)
 }

@@ -93,14 +93,14 @@ func uninstall() error {
 	return nil
 }
 
-func input(event types.KeyboardEvent) error {
+func input(event types.KBDLLHOOKSTRUCT) error {
 	s := struct {
 		Type uint32
 		Val  types.KBDLLHOOKSTRUCT
 		Padd uint64
 	}{
 		Type: 0,
-		Val:  event.KBDLLHOOKSTRUCT,
+		Val:  event,
 		Padd: 0,
 	}
 	return win32.SendInput(1, unsafe.Pointer(&s), unsafe.Sizeof(s))

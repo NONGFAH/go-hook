@@ -20,6 +20,6 @@ func Uninstall() error {
 	return uninstall()
 }
 
-func Input(event types.MouseEvent) error {
-	return input(event)
+func Input(mouseEvent types.MSLLHOOKSTRUCT) error {
+	return input(mouseEvent)
 }
