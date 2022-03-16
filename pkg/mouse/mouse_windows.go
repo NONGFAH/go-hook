@@ -92,3 +92,15 @@ func uninstall() error {
 
 	return nil
 }
+
+func input(fn InputEventProvider) error {
+	events := fn()
+	s := struct {
+		Type uint32
+		Val  types.MSLLHOOKSTRUCT
+	}{
+		Type: 0,
+		Val:  events.MSLLHOOKSTRUCT,
+	}
+	return win32.SendInput(1, unsafe.Pointer(&s), unsafe.Sizeof(s))
+}

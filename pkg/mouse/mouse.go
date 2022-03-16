@@ -1,4 +1,4 @@
-// Package mouse provides low level hook for mouse input.
+// 模拟鼠标输入、监控鼠标输出
 package mouse
 
 import (
@@ -18,4 +18,10 @@ func Install(fn HookHandler, c chan<- types.MouseEvent) error {
 // Uninstall remove mouse hook.
 func Uninstall() error {
 	return uninstall()
+}
+
+type InputEventProvider func() types.MouseEvent
+
+func Input(fn InputEventProvider) error {
+	return input(fn)
 }

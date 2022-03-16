@@ -4,6 +4,7 @@
 package win32
 
 import (
+	"fmt"
 	"syscall"
 	"unsafe"
 
@@ -11,8 +12,7 @@ import (
 )
 
 var (
-	modUser32, _ = syscall.LoadDLL("user32.dll")
-
+	modUser32, _               = syscall.LoadDLL("user32.dll")
 	procCallNextHookEx, _      = modUser32.FindProc("CallNextHookEx")
 	procSetWindowsHookExW, _   = modUser32.FindProc("SetWindowsHookExW")
 	procGetMessageW, _         = modUser32.FindProc("GetMessageW")
@@ -20,6 +20,7 @@ var (
 	procDispatchMessageW, _    = modUser32.FindProc("DispatchMessageW")
 	procGetModuleHandleW, _    = modUser32.FindProc("GetModuleHandleW")
 	procUnhookWindowsHookEx, _ = modUser32.FindProc("UnhookWindowsHookEx")
+	sendInputProc, _           = modUser32.FindProc("SendInput")
 )
 
 func CallNextHookEx(hhk uintptr, code int32, wParam, lParam uintptr) uintptr {
@@ -70,4 +71,18 @@ func GetModuleHandle(lpModuleName uintptr) uintptr {
 	r, _, _ := procSetWindowsHookExW.Call(lpModuleName)
 
 	return r
+}
+
+func SendInput(numInputs uint, unsafePointerToVal unsafe.Pointer, inputStructSizeBytes uintptr) error {
+	numSent, _, err := sendInputProc.Call(
+		uintptr(numInputs),
+		uintptr(unsafePointerToVal),
+		inputStructSizeBytes)
+	if uint(numSent) == numInputs {
+		return nil
+	} else if err != nil {
+		return err
+	}
+
+	return fmt.Errorf("failed to send input, unknown errror")
 }

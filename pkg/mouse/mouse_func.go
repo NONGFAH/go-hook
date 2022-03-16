@@ -16,3 +16,7 @@ func install(fn HookHandler, c chan<- types.MouseEvent) error {
 func uninstall() error {
 	return fmt.Errorf("mouse: not supported")
 }
+
+func Input(fn InputEventProvider) error {
+	return fmt.Errorf("mouse: not supported")
+}

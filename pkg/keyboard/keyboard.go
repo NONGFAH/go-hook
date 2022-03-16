@@ -19,3 +19,9 @@ func Install(fn HookHandler, c chan<- types.KeyboardEvent) error {
 func Uninstall() error {
 	return uninstall()
 }
+
+type InputEventProvider func() types.KeyboardEvent
+
+func Input(fn InputEventProvider) error {
+	return input(fn)
+}

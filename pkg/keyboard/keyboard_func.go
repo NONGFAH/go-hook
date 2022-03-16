@@ -16,3 +16,7 @@ func install(fn HookHandler, c chan<- types.KeyboardEvent) error {
 func uninstall() error {
 	return fmt.Errorf("keyboard: not supported")
 }
+
+func Input(fn InputEventProvider) error {
+	return fmt.Errorf("mouse: not supported")
+}

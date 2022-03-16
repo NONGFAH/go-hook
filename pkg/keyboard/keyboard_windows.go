@@ -92,3 +92,17 @@ func uninstall() error {
 
 	return nil
 }
+
+func input(fn InputEventProvider) error {
+	events := fn()
+	s := struct {
+		Type uint32
+		Val  types.KBDLLHOOKSTRUCT
+		Padd uint64
+	}{
+		Type: 0,
+		Val:  events.KBDLLHOOKSTRUCT,
+		Padd: 0,
+	}
+	return win32.SendInput(1, unsafe.Pointer(&s), unsafe.Sizeof(s))
+}
