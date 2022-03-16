@@ -20,8 +20,6 @@ func Uninstall() error {
 	return uninstall()
 }
 
-type InputEventProvider func() types.KeyboardEvent
-
-func Input(fn InputEventProvider) error {
-	return input(fn)
+func Input(event types.KeyboardEvent) error {
+	return input(event)
 }

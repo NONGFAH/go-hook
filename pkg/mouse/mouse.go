@@ -20,8 +20,6 @@ func Uninstall() error {
 	return uninstall()
 }
 
-type InputEventProvider func() types.MouseEvent
-
-func Input(fn InputEventProvider) error {
-	return input(fn)
+func Input(event types.MouseEvent) error {
+	return input(event)
 }

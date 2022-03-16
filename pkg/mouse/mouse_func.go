@@ -17,6 +17,6 @@ func uninstall() error {
 	return fmt.Errorf("mouse: not supported")
 }
 
-func Input(fn InputEventProvider) error {
+func Input(event types.MouseEvent) error {
 	return fmt.Errorf("mouse: not supported")
 }
