@@ -88,13 +88,10 @@ func SendInput(numInputs uint, unsafePointerToVal unsafe.Pointer, inputStructSiz
 	return fmt.Errorf("failed to send input, unknown errror")
 }
 
-func MapVirtualKey(scanCode uint32) (vkCode types.VKCode, err error) {
-	r1, _, err := procMapVirtualKeyW.Call(uintptr(scanCode), 3)
-	if err != nil {
-		return 0, err
-	}
+func MapVirtualKey(scanCode uint32) (types.VKCode, error) {
+	r1, _, _ := procMapVirtualKeyW.Call(uintptr(scanCode), 3)
 	if r1 == 0 {
 		return 0, fmt.Errorf("failed to map scanCode to vkCode, unknown errror")
 	}
-	return types.VKCode(r1), err
+	return types.VKCode(r1), nil
 }
