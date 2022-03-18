@@ -20,7 +20,8 @@ var (
 	procDispatchMessageW, _    = modUser32.FindProc("DispatchMessageW")
 	procGetModuleHandleW, _    = modUser32.FindProc("GetModuleHandleW")
 	procUnhookWindowsHookEx, _ = modUser32.FindProc("UnhookWindowsHookEx")
-	sendInputProc, _           = modUser32.FindProc("SendInput")
+	procSendInput, _           = modUser32.FindProc("SendInput")
+	procMapVirtualKeyW, _      = modUser32.FindProc("MapVirtualKeyW")
 )
 
 func CallNextHookEx(hhk uintptr, code int32, wParam, lParam uintptr) uintptr {
@@ -74,7 +75,7 @@ func GetModuleHandle(lpModuleName uintptr) uintptr {
 }
 
 func SendInput(numInputs uint, unsafePointerToVal unsafe.Pointer, inputStructSizeBytes uintptr) error {
-	numSent, _, err := sendInputProc.Call(
+	numSent, _, err := procSendInput.Call(
 		uintptr(numInputs),
 		uintptr(unsafePointerToVal),
 		inputStructSizeBytes)
@@ -85,4 +86,15 @@ func SendInput(numInputs uint, unsafePointerToVal unsafe.Pointer, inputStructSiz
 	}
 
 	return fmt.Errorf("failed to send input, unknown errror")
+}
+
+func mapVirtualKey(scanCode uint32) (vkCode types.VKCode, err error) {
+	r1, _, err := procMapVirtualKeyW.Call(uintptr(scanCode), 3)
+	if err != nil {
+		return 0, err
+	}
+	if r1 == 0 {
+		return 0, fmt.Errorf("failed to map scanCode to vkCode, unknown errror")
+	}
+	return types.VKCode(r1), err
 }
