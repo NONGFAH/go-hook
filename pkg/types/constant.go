@@ -37,10 +37,14 @@ const (
 	WM_RBUTTONUP   Message = 0x0205
 	WM_MBUTTONDOWN Message = 0x0207
 	WM_MBUTTONUP   Message = 0x0208
-	WM_KEYDOWN     Message = 0x0100
-	WM_KEYUP       Message = 0x0101
-	WM_SYSKEYDOWN  Message = 0x0104
-	WM_SYSKEYUP    Message = 0x0105
+	// WM_SBUTTONDOWN 鼠标侧键按下
+	WM_SBUTTONDOWN Message = 0x020B
+	// WM_SBUTTONUP 鼠标侧键抬起
+	WM_SBUTTONUP  Message = 0x020C
+	WM_KEYDOWN    Message = 0x0100
+	WM_KEYUP      Message = 0x0101
+	WM_SYSKEYDOWN Message = 0x0104
+	WM_SYSKEYUP   Message = 0x0105
 )
 
 // VKCode represents Microsoft defined virtual key codes.
